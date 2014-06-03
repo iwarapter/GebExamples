@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <title>Login Page</title>
+   </head>
+   <body>
+      <h1 class="page-header">Login</h1>
+      <ul class="errors">
+         <!-- Only included if there were submission errors -->
+         <!-- Any submission errors will be displayed as list item elements here -->
+      </ul>
+      <form id="login-form" action="checkLogin.html" method="post">
+         <label for="username-field">Username</label>
+         <input type="text" name="username" id="username-field" />
+         <br />
+         <label for="password-field">Password</label>
+         <input type="password" name="password" id="password-field" />
+         <br />
+         <input type="submit" value="Submit" />
+      </form>
+   </body>
+</html>
