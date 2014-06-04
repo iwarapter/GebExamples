@@ -5,13 +5,8 @@ class LoginPage extends Page {
     static at = { title == "Login Page" }
     static content = {
     	header { $(".page-header") }
-
-        loginForm { $("form") }
-
-		username { form.username }
-
-		password { form.password }
-
+		username { $('input[name=user\\.forename]') }
+		password { $('input[name=user\\.password]') }
 		loginButton(to: CheckLoginPage) { $("input", value: "Submit") }
 	}
 }

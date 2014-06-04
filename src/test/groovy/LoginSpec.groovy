@@ -12,10 +12,8 @@ class LoginSpec extends GebReportingSpec {
         at LoginPage
 
         when: "we add our user details"
-        loginForm.with {
-            username = 'user1'
-            password = 'password1'
-        }
+        username = 'user1'
+        password = 'password1'
         
         and:
         loginButton.click()
