@@ -44,3 +44,9 @@ test {
 	dependsOn drivers.collect { tasks["${it}Test"] }
 	enabled = false
 }
+
+chromeTest {
+    testLogging {
+        events 'started', 'passed'
+    }
+}
