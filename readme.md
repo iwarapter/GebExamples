@@ -6,11 +6,15 @@ This is a simple repo for me to test Geb with. The build is setup to work with H
 The following commands will launch the tests with the individual browsers:
 
 ```sh
-./gradlew htmlunitTest
-./gradlew chromeTest
+gradlew ieTest
+gradlew chromeTest
 ```
 To run with all, you can run:
 
 ```sh
-./gradlew test
+gradlew functionalTest
+```
+For specific classes (example with chrome)
+```sh
+gradlew chromeTest -DchromeTest.single=Smoke*
 ```
