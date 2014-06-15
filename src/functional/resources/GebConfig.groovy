@@ -1,4 +1,7 @@
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.ie.InternetExplorerDriver
+
+import org.openqa.selenium.remote.DesiredCapabilities
 
 waiting {
 	timeout = 2
@@ -11,6 +14,10 @@ environments {
 	chrome {
 		//ensure chromedriver.exe is on the PATH
 		driver = { new ChromeDriver() }
+	}
+
+	ie {
+		driver = { new InternetExplorerDriver() }
 	}
 
 	//TODO: Add IE config

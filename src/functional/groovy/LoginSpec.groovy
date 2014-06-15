@@ -9,7 +9,7 @@ class LoginSpec extends GebReportingSpec {
         to LoginPage
 
         then: "the page has loaded"
-        at LoginPage
+        waitFor { at LoginPage }
 
         when: "we add our user details"
         username = 'user1'
