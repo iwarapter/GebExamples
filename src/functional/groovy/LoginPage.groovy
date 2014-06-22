@@ -1,7 +1,7 @@
 import geb.*
 
 class LoginPage extends Page {
-    static url = new File('src/functional/resources/html/login.html').toURI()
+    static url = 'login.html'
     static at = { title == "Login Page" }
     static content = {
     	header { $(".page-header") }

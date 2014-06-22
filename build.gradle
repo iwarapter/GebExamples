@@ -9,6 +9,8 @@ sourceSets {
     functional
 }
 
+def config = new ConfigSlurper('sys').parse(new File("gradle\\config\\config.groovy").text)
+
 // The drivers we want to use
 ext.drivers = ["chrome", "ie"] //TODO: Add IE + Firefox config
 
@@ -38,6 +40,7 @@ drivers.each { driver ->
 
         systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
         systemProperty "geb.env", driver
+        systemProperty "geb.build.baseUrl", new File(config.baseUrl).toURI()
 
         classpath = sourceSets.functional.runtimeClasspath
         testClassesDir = sourceSets.functional.output.classesDir
