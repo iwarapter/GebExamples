@@ -1,3 +1,5 @@
+package pages
+
 import geb.*
 
 class LoginPage extends Page {

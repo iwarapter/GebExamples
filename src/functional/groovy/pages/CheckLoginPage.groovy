@@ -1,3 +1,5 @@
+package pages
+
 import geb.*
 
 class CheckLoginPage extends Page {

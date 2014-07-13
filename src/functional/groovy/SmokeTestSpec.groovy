@@ -1,3 +1,5 @@
+import pages.CheckLoginPage
+import pages.LoginPage
 import spock.lang.*
 import geb.*
 import geb.spock.*
