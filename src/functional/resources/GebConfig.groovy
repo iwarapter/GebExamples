@@ -1,11 +1,14 @@
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.ie.InternetExplorerDriver
-
+import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.remote.DesiredCapabilities
+import org.openqa.selenium.remote.RemoteWebDriver
 
 waiting {
 	timeout = 2
 }
+
+boolean remote = System.getProperty("remote.test")
 
 environments {
 
@@ -20,7 +23,15 @@ environments {
 		driver = { new InternetExplorerDriver() }
 	}
 
-	//TODO: Add IE config
+    firefox {
+        DesiredCapabilities capability = DesiredCapabilities.firefox();
+        if(remote){
+            driver = { new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability) }
+        }
+        else {
+            driver = { new FirefoxDriver() }
+        }
+    }
 
 	//TODO: Add firefox config
 }

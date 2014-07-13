@@ -8,11 +8,20 @@ repositories {
 sourceSets {
     functional
 }
+loadConfiguration()
 
-def config = new ConfigSlurper('sys').parse(new File("gradle\\config\\config.groovy").text)
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    setProperty 'environment', environment
+    println "Environment is set to $environment"
+
+    def configFile = file("gradle\\config\\config.groovy")
+    def config = new ConfigSlurper(environment).parse(configFile.toURL())
+    ext.config = config
+}
 
 // The drivers we want to use
-ext.drivers = ["chrome", "ie"] //TODO: Add IE + Firefox config
+ext.drivers = ["chrome", "ie", "firefox"]
 
 dependencies {
     def gebVersion = "0.9.2"
@@ -41,6 +50,7 @@ drivers.each { driver ->
         systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
         systemProperty "geb.env", driver
         systemProperty "geb.build.baseUrl", new File(config.baseUrl).toURI()
+        systemProperty "remote.test", hasProperty('remote') ? remote : false
 
         classpath = sourceSets.functional.runtimeClasspath
         testClassesDir = sourceSets.functional.output.classesDir
@@ -48,8 +58,6 @@ drivers.each { driver ->
         testLogging {
             events 'started', 'passed'
         }
-        // If you wanted to set the baseUrl in your build…
-        // systemProperty "geb.build.baseUrl", "http://myapp.com"
     }
 }
 
